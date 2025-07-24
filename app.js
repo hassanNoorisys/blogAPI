@@ -9,9 +9,11 @@ app.use(express.static('./src/public'))
 
 
 // routes
-
 import userRoute from './src/routes/user.routes.js'
+import blogRoute from './src/routes/blog.routes.js'
+
 app.use('/api/user', userRoute)
+app.use('/api/blog', blogRoute)
 
 // error middleware
 app.use(errorHandler)
