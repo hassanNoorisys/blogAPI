@@ -21,13 +21,19 @@ const createBlogService = async (data) => {
 
 const getBlogsService = async (query) => {
 
-    const blogs = await blogModel.find({
 
-        ...(query._id && { _id: query._id }),
-        ...(query.title && { title: query.title }),
-        ...(query.slug && { slug: query.slug })
+    const page = query.page
+    const size = query.size
 
-    })
+    const blogs = await blogModel.find(
+
+        {
+            ...(query._id && { _id: query._id }),
+            ...(query.title && { title: query.title }),
+            ...(query.slug && { slug: query.slug })
+        })
+        .skip((page - 1) * size)
+        .limit(size)
 
     if (!blogs || blogs.length < 1) return new AppError('No Blogs found', constants.NO_CONTENT)
 
