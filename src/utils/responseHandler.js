@@ -1,4 +1,4 @@
-const customResponse = (res, statusCode, status, message, data = null) => {
+const responseHandler = (res, statusCode, status, message, data = null) => {
 
     const response = { status }
 
@@ -8,4 +8,4 @@ const customResponse = (res, statusCode, status, message, data = null) => {
     res.status(statusCode).json(response)
 }
 
-export default customResponse
+export default responseHandler

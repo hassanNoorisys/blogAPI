@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { loginUser, registerUser } from "../controllers/user.controller.js";
 
 const route = Router()
 
 route.post('/register', registerUser)
 
-// route.post('/login')
+route.post('/login', loginUser)
 
 // route.patch('/')
 
