@@ -4,10 +4,10 @@ class AppError extends Error {
 
         super(message)
 
-        this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error'
+        this.status = `${statusCode}`.startsWith(4) ? 'fail' : 'error'
         this.statusCode = statusCode || 500
         this.message = message || 'Internal Server error'
-        this.isOperational
+        this.isOperational = true
         this.success = false
         
         Error.captureStackTrace(this, this.constructor);

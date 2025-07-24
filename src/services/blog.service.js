@@ -19,6 +19,7 @@ const createBlogService = async (data) => {
     return newBlog
 }
 
+// get blogs service
 const getBlogsService = async (query) => {
 
 
