@@ -1,4 +1,4 @@
-export default constant = {
+const constants = {
 
     OK: 200,
     CREATED: 201,
@@ -8,6 +8,8 @@ export default constant = {
     UNAUTHORIZED: 401,
     FORBIDDEN: 403,
     NOT_FOUND: 404,
+    CONFLICT: 409,
 
     SERVER_ERROR: 500,
 }
+export default constants

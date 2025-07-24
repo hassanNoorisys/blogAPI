@@ -1,6 +1,6 @@
-export default asyncHandler = (fn) => {
+const asyncHandler = (fn) => {
 
-    async (req, res, next) => {
+    return async (req, res, next) => {
 
         try {
 
@@ -12,3 +12,5 @@ export default asyncHandler = (fn) => {
         }
     }
 }
+
+export default asyncHandler

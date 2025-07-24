@@ -1,5 +1,4 @@
-export default customResponse = (res, statusCode, status, message, data = null) => {
-
+const customResponse = (res, statusCode, status, message, data = null) => {
 
     const response = { status }
 
@@ -8,3 +7,5 @@ export default customResponse = (res, statusCode, status, message, data = null) 
 
     res.status(statusCode).json(response)
 }
+
+export default customResponse
