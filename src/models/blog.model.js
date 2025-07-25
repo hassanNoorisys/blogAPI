@@ -1,39 +1,36 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
-const blogSchema = new Schema({
-
+const blogSchema = new Schema(
+  {
     userId: {
-
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'user'
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'user',
     },
 
     title: {
-
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
 
     content: {
-
-        type: String,
-        require: true
+      type: String,
+      require: true,
     },
 
-    images: [{
-
+    images: [
+      {
         url: String,
-        alt: String
-    }],
+        alt: String,
+      },
+    ],
 
     slug: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-        type: String,
-        required: true
-    }
-
-
-}, { timestamps: true })
-
-export default model('blog', blogSchema)
+export default model('blog', blogSchema);
