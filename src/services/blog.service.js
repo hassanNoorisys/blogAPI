@@ -24,6 +24,8 @@ const createBlogService = async (data) => {
 
 // get blogs service
 const getBlogsService = async (query) => {
+  let isUniqueQuery = query.id || query.slug;
+
   const page = query.page;
   const size = query.size;
 
@@ -33,11 +35,15 @@ const getBlogsService = async (query) => {
       ...(query.title && { title: query.title }),
       ...(query.slug && { slug: query.slug }),
     })
-    .skip((page - 1) * size)
-    .limit(size);
+    .skip(!isUniqueQuery ? (page - 1) * size || 0 : 0)
+    .limit(!isUniqueQuery ? size || 5 : 1)
+    .populate({
+      path: 'userId',
+      select: ['-mobile', '-password', '-createdAt', '-updatedAt'],
+    });
 
   if (!blogs || blogs.length < 1)
-    return new AppError('No Blogs found', constants.NO_CONTENT);
+    new AppError('No Blogs found', constants.NO_CONTENT);
 
   return blogs;
 };

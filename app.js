@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/public'));
-app.use(morgan('combined'));
+app.use(morgan('dev'));
 
 // routes
 import userRoute from './src/routes/user.routes.js';
